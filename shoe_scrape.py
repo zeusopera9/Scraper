@@ -42,6 +42,35 @@ try:
     ratings_count = driver.find_element(By.CLASS_NAME, 'index-ratingsCount').text
     print(f'Ratings Count: {ratings_count}')
 
+    # Click the "See More" button to reveal additional details
+    try:
+        see_more_button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, 'index-showMoreText'))
+        )
+        see_more_button.click()
+        
+        # Wait for the new content to load
+        WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.CLASS_NAME, 'index-rowKey'))  # Adjust as necessary
+        )
+    except Exception as e:
+        print("Could not click 'See More' button:", e)
+
+    # Dictionary to store key-value pairs
+    details = {}
+
+    # Finding all key-value pairs
+    keys = driver.find_elements(By.CLASS_NAME, 'index-rowKey')
+    values = driver.find_elements(By.CLASS_NAME, 'index-rowValue')
+
+    # Loop through keys and values to populate the dictionary
+    for key, value in zip(keys, values):
+        details[key.text] = value.text
+
+    # Print the collected details
+    for key, value in details.items():
+        print(f'{key}: {value}')
+
 except Exception as e:
     print(f"An error occurred: {e}")
 
