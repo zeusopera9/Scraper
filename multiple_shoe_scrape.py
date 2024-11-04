@@ -7,14 +7,14 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 
 # Path to ChromeDriver executable
-service = Service(r"C:\Users\zaida\Downloads\chromedriver-win64\chromedriver-win64\chromedriver.exe")
+service = Service(r"C:\Users\Yakshit\Downloads\chromedriver-win64\chromedriver-win64\chromedriver.exe")
 driver = webdriver.Chrome(service=service)
 
 # Initialize list to store product details
 product_data = []
 
 # Read URLs from file
-with open("m_product_urls_flip_flops.txt", "r") as file:
+with open("m_product_urls_sandals.txt", "r") as file:
     urls = [line.strip() for line in file.readlines()]
 
 # Loop through each URL and fetch product details
@@ -87,5 +87,5 @@ driver.quit()
 df = pd.DataFrame(product_data)
 
 # Save the DataFrame to a CSV file
-df.to_csv("m_product_details_flip_flops.csv", index=False)
+df.to_csv("m_product_details_sandals.csv", index=False)
 print("Product details have been saved to m_product_details_flip_flops.csv.")
