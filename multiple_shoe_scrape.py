@@ -26,7 +26,7 @@ for url in urls:
         time.sleep(5)
         
         # Wait for product title to be visible
-        title = WebDriverWait(driver, 10).until(
+        title = WebDriverWait(driver, 5).until(
             EC.visibility_of_element_located((By.CLASS_NAME, 'pdp-title'))
         ).text
 
@@ -49,7 +49,7 @@ for url in urls:
             see_more_button.click()
             
             # Wait for new content to load
-            WebDriverWait(driver, 10).until(
+            WebDriverWait(driver, 5).until(
                 EC.visibility_of_element_located((By.CLASS_NAME, 'index-rowKey'))
             )
         except Exception as e:
