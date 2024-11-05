@@ -14,7 +14,7 @@ driver = webdriver.Chrome(service=service)
 product_data = []
 
 # Read URLs from file
-with open("m_product_urls_sandals.txt", "r") as file:
+with open("w_product_urls_sports-shoes.txt", "r") as file:
     urls = [line.strip() for line in file.readlines()]
 
 # Loop through each URL and fetch product details
@@ -87,5 +87,5 @@ driver.quit()
 df = pd.DataFrame(product_data)
 
 # Save the DataFrame to a CSV file
-df.to_csv("m_product_details_sandals.csv", index=False)
+df.to_csv("w_product_details_sports-shoes.csv", index=False)
 print("Product details have been saved to m_product_details_flip_flops.csv.")
